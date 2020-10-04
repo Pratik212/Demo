@@ -11,5 +11,9 @@ namespace Demo.Interfaces
         Task<Camp> GetCamp(int id);
 
         Task<Camp> AddCamp(Camp camp);
+
+        Task<Camp> UpdateCamp(Camp camp);
+
+        Task<Camp> DeleteCamp(int id);
     }
 }

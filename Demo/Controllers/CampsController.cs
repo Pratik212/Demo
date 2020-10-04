@@ -81,5 +81,54 @@ namespace Demo.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error in Retrieving Data from  Database");
             }
         }
+        
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<Camp>> UpdateCamp(int id, Camp camp)
+        {
+            try
+            {
+                if (id!= camp.Id)
+                {
+                    return BadRequest("Id Mismatch");
+                }
+
+                var campUpdate = await _campRepository.GetCamp(id);
+                if (campUpdate==null)
+                {
+                    return NotFound($"department Id = {id} Not Found");
+                }
+
+                return await _campRepository.UpdateCamp(camp);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+        
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<Camp>> DeleteEmployee(int id, Camp camp)
+        {
+            try
+            {
+                if (id != camp.Id)
+                {
+                    return BadRequest("Id Mismatch");
+                }
+
+                var campDelete = await _campRepository.GetCamp(id);
+                if (campDelete==null)
+                {
+                    return NotFound($"Department Id = {id} Not Found");
+                }
+
+                return await _campRepository.DeleteCamp(id);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in Retrieving Data from  Database");
+            }
+        }
     }
 }

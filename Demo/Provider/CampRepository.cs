@@ -33,5 +33,38 @@ namespace Demo.Provider
             return camps.Entity;
 
         }
+
+        public async Task<Camp> UpdateCamp(Camp camp)
+        {
+            var result =await _context.Camps.FirstOrDefaultAsync(a => a.Id == camp.Id);
+            if (result!=null)
+            {
+                result.Id = camp.Id;
+                result.Moniker = camp.Moniker;
+                result.Name = camp.Name;
+                result.Length = camp.Length;
+                result.Description = camp.Description;
+                result.EventDate = camp.EventDate;
+                result.RowVersion = camp.RowVersion;
+                
+                await _context.SaveChangesAsync();
+                return result;
+            }
+
+            return null;
+        }
+
+        public async Task<Camp>DeleteCamp(int id)
+        {
+            var camps =await _context.Camps.FirstOrDefaultAsync(e => e.Id == id);
+            if (camps != null)
+            {
+                _context.Camps.Remove(camps);
+                await _context.SaveChangesAsync();
+                return camps;
+            }
+
+            return null;
+        }
     }
 }
