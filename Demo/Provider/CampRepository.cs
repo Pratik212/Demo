@@ -20,5 +20,18 @@ namespace Demo.Provider
         {
             return await _context.Camps.ToListAsync();
         }
+
+        public async Task<Camp> GetCamp(int id)
+        {
+            return await _context.Camps.FirstOrDefaultAsync(x=>x.Id==id);
+        }
+
+        public async Task<Camp> AddCamp(Camp camp)
+        {
+            var camps = await _context.Camps.AddAsync(camp);
+            await _context.SaveChangesAsync();
+            return camps.Entity;
+
+        }
     }
 }
