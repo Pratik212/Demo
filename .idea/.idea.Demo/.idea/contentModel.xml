@@ -8,19 +8,24 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="CampsController.cs" t="Include" />
+          <e p="SchoolController.cs" t="Include" />
         </e>
         <e p="Demo.csproj" t="IncludeRecursive" />
         <e p="DemoContext.cs" t="Include" />
         <e p="Interfaces" t="Include">
           <e p="ICampRepository.cs" t="Include" />
+          <e p="ISchoolRepository.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
           <e p="20201004085246_InitialCreate.cs" t="Include" />
           <e p="20201004085246_InitialCreate.Designer.cs" t="Include" />
+          <e p="20201009151712_AddedSchool.cs" t="Include" />
+          <e p="20201009151712_AddedSchool.Designer.cs" t="Include" />
           <e p="DemoContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Camp.cs" t="Include" />
+          <e p="School.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -35,6 +40,7 @@
         </e>
         <e p="Provider" t="Include">
           <e p="CampRepository.cs" t="Include" />
+          <e p="SchoolRepository.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="WeatherForecast.cs" t="Include" />

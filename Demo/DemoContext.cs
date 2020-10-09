@@ -11,6 +11,8 @@ namespace Demo
 
         public virtual DbSet<Camp> Camps { get; set; }
         
+        public virtual DbSet<School>Schools { get; set; }
+        
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
