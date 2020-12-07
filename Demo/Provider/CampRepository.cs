@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Demo.Interfaces;
@@ -18,7 +19,7 @@ namespace Demo.Provider
 
         public  async Task<IEnumerable<Camp>> GetAllCamp()
         {
-            return await _context.Camps.ToListAsync();
+            return await _context.Camps.OrderBy(x=>x.Id).ToListAsync();
         }
 
         public async Task<Camp> GetCamp(int id)
@@ -47,8 +48,8 @@ namespace Demo.Provider
                 result.EventDate = camp.EventDate;
                 result.RowVersion = camp.RowVersion;
                 
-                await _context.SaveChangesAsync();
-                return result;
+                    await _context.SaveChangesAsync();
+                    return result;
             }
 
             return null;
